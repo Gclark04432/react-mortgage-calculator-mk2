@@ -9,14 +9,18 @@ class MortgageForm extends Component {
         firstSalary: 0,
         secondSalary: 0,
         deposit: 0,
-        otherCommitments: 0
+        otherCommitments: 0,
+        mortgageTerm: 25,
+        interestRate:3.0
     }
     this.handleApplicantsChange = this.handleApplicantsChange.bind(this);
     this.handleFirstSalaryChange = this.handleFirstSalaryChange.bind(this)
     this.handleSecondSalaryChange = this.handleSecondSalaryChange.bind(this)
     this.handleDepositChange = this.handleDepositChange.bind(this)
     this.handleOtherCommitmentsChange = this.handleOtherCommitmentsChange.bind(this)
+    this.handleMortgageTermChange = this.handleMortgageTermChange.bind(this)
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
+    this.handleInterestRateChange = this.handleInterestRateChange.bind(this)
   }
 
   handleApplicantsChange(event){
@@ -45,13 +49,23 @@ class MortgageForm extends Component {
     this.setState({otherCommitments: parseInt(event.target.value)});
   }
 
+  handleMortgageTermChange(event){
+    this.setState({mortgageTerm: parseInt(event.target.value)});
+  }
+
+  handleInterestRateChange(event){
+    this.setState({interestRate: parseFloat(event.target.value)})
+  }
+
   handleFormSubmit(event){
     event.preventDefault();
     const newCriteria = {
       firstSalary: this.state.firstSalary,
       secondSalary: this.state.secondSalary,
       deposit: this.state.deposit,
-      otherCommitments: this.state.otherCommitments
+      otherCommitments: this.state.otherCommitments,
+      mortgageTerm: this.state.mortgageTerm,
+      interestRate: this.state.interestRate
     }
     this.props.submitCriteria(newCriteria)
   }
@@ -75,11 +89,18 @@ class MortgageForm extends Component {
       <br/><br/>
       <input type="number" placeholder="Other Monthly Commitments" min="0" onChange={this.handleOtherCommitmentsChange}/>
 
+      <br/><br/>
+      <input type="range" defaultValue="25" min="5" max="35" step="1" onChange={this.handleMortgageTermChange} />
+
+      <br/><br/>
+      <input type="number" placeholder="Interest Rate" step="0.1" min="2.0" max="6.0" onChange={this.handleInterestRateChange} />
 
       <br/><br/>
       <input type="submit" value="Calculate" />
 
       </form>
+
+
     )
   }
 

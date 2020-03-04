@@ -11,11 +11,31 @@ function MortgageAmount(props){
     return mortgage;
   }
 
+  function calculateMaxPropertyValue(){
+    const maxMortgage = calculateMaximumMortgageAmount()
+    if (maxMortgage === null) {
+      return null
+    }
+    return maxMortgage + props.criteria.deposit
+  }
+
+  function calculateMonthlyRepayment(){
+    if (!props.criteria){
+      return null
+    }
+    const mortgageAmount = calculateMaximumMortgageAmount()
+    const rate = (props.criteria.interestRate/1200)
+    const repayments = (props.criteria.mortgageTerm*12)
+    const monthlyPayment = mortgageAmount * ((rate*(1+rate)**repayments) / (((1+rate)**repayments)-1) )
+    return monthlyPayment
+  }
+
 
   return (
     <article>
-    {console.log(props)}
-    <p>{calculateMaximumMortgageAmount()}</p>
+      <p>Maximum mortgage amount: £{calculateMaximumMortgageAmount()}</p>
+      <p>Maximum property value: £{calculateMaxPropertyValue()}</p>
+      <p>Monthly repayment: £{calculateMonthlyRepayment()}</p>
     </article>
   )
 }
