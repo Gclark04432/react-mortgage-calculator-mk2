@@ -91,6 +91,7 @@ class MortgageForm extends Component {
 
       <br/><br/>
       <input type="range" defaultValue="25" min="5" max="35" step="1" onChange={this.handleMortgageTermChange} />
+      <p>{this.state.mortgageTerm} years</p>
 
       <br/><br/>
       <input type="number" placeholder="Interest Rate" step="0.1" min="2.0" max="6.0" onChange={this.handleInterestRateChange} />
