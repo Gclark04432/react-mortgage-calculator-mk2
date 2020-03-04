@@ -29,7 +29,7 @@ class MortgageForm extends Component {
 
   secondApplicant(){
     if (this.state.applicants === 2){
-      return <input type="number" placeholder="Enter Second Salary" min="0" onChange={this.handleSecondSalaryChange}/>
+      return <input className="text" type="number" placeholder="Enter Second Salary" min="0" onChange={this.handleSecondSalaryChange}/>
     }
   }
 
@@ -75,26 +75,27 @@ class MortgageForm extends Component {
       <form onSubmit={this.handleFormSubmit}>
       <h3>Please select number of salaries to consider:</h3>
       <input type="radio" name="applicants" value="1" defaultChecked onChange={this.handleApplicantsChange}/>
-      <label htmlFor="1">1</label>
+      <label htmlFor="1">1 Salary</label>
       <input type="radio" name="applicants" value="2" onChange={this.handleApplicantsChange}/>
-      <label htmlFor="2">2</label>
+      <label htmlFor="2">2 Salaries</label>
       <br/><br/>
 
-      <input type="number" placeholder="Enter First Salary:" min="0" onChange={this.handleFirstSalaryChange}/>
+      <input className="text" type="number" placeholder="Enter First Salary:" min="0" onChange={this.handleFirstSalaryChange}/>
       {this.secondApplicant()}
 
       <br/><br/>
-      <input type="number" placeholder="Enter Deposit Amount:" min="0" onChange={this.handleDepositChange}/>
+      <input className="text" type="number" placeholder="Enter Deposit Amount:" min="0" onChange={this.handleDepositChange}/>
 
       <br/><br/>
-      <input type="number" placeholder="Other Monthly Commitments" min="0" onChange={this.handleOtherCommitmentsChange}/>
+      <input className="text" type="number" placeholder="Other Monthly Commitments" min="0" onChange={this.handleOtherCommitmentsChange}/>
 
       <br/><br/>
+      Enter mortgage term below: <br/>
       <input type="range" defaultValue="25" min="5" max="35" step="1" onChange={this.handleMortgageTermChange} />
       <p>{this.state.mortgageTerm} years</p>
 
-      <br/><br/>
-      <input type="number" placeholder="Interest Rate" step="0.1" min="2.0" max="6.0" onChange={this.handleInterestRateChange} />
+      <br/>
+      <input className="text" type="number" placeholder="Interest Rate" step="0.1" min="2.0" max="6.0" onChange={this.handleInterestRateChange} />
 
       <br/><br/>
       <input type="submit" value="Calculate" />

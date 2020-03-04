@@ -19,7 +19,7 @@ class MortgageContainer extends Component {
   render() {
     return (
       <article>
-      <h2>I'm a mortgage container</h2>
+      <h2>Please use our mortgage calculator below</h2>
       <MortgageForm submitCriteria={this.updateCriteria}/>
       <MortgageAmount criteria={this.state.criteria}/>
       </article>

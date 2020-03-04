@@ -27,7 +27,7 @@ function MortgageAmount(props){
     const rate = (props.criteria.interestRate/1200)
     const repayments = (props.criteria.mortgageTerm*12)
     const monthlyPayment = mortgageAmount * ((rate*(1+rate)**repayments) / (((1+rate)**repayments)-1) )
-    return monthlyPayment
+    return monthlyPayment.toFixed(2)
   }
 
 
